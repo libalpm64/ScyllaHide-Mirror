@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{79774D44-ED2A-4FD2-9224-40AF0A590410}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>ScyllaHideOlly1Plugin</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v90</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>ScyllaHideOlly1</TargetName>
+    <OutDir>$(SolutionDir)$(Configuration)\plugins\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>ScyllaHideOlly1</TargetName>
+    <OutDir>$(SolutionDir)$(Configuration)\plugins\</OutDir>
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;SCYLLAHIDEOLLY1PLUGIN_EXPORTS;OLLY1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StructMemberAlignment>1Byte</StructMemberAlignment>
+      <AdditionalOptions>/J %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>ollydbg.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ntdll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SCYLLAHIDEOLLY1PLUGIN_EXPORTS;OLLY1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StructMemberAlignment>1Byte</StructMemberAlignment>
+      <AdditionalOptions>/J %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>ollydbg.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ntdll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateMapFile>true</GenerateMapFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\distorm\decoder.c" />
+    <ClCompile Include="..\distorm\distorm.c" />
+    <ClCompile Include="..\distorm\instructions.c" />
+    <ClCompile Include="..\distorm\insts.c" />
+    <ClCompile Include="..\distorm\mnemonics.c" />
+    <ClCompile Include="..\distorm\operands.c" />
+    <ClCompile Include="..\distorm\prefix.c" />
+    <ClCompile Include="..\distorm\textdefs.c" />
+    <ClCompile Include="..\distorm\wstring.c" />
+    <ClCompile Include="..\InjectorCLI\ApplyHooking.cpp" />
+    <ClCompile Include="..\InjectorCLI\DynamicMapping.cpp" />
+    <ClCompile Include="..\InjectorCLI\Logger.cpp" />
+    <ClCompile Include="..\InjectorCLI\OperatingSysInfo.cpp" />
+    <ClCompile Include="..\InjectorCLI\ReadNtConfig.cpp" />
+    <ClCompile Include="..\InjectorCLI\RemoteHook.cpp" />
+    <ClCompile Include="..\InjectorCLI\RemotePebHider.cpp" />
+    <ClCompile Include="..\PluginGeneric\AttachDialog.cpp" />
+    <ClCompile Include="..\PluginGeneric\CustomExceptionHandler.cpp" />
+    <ClCompile Include="..\PluginGeneric\IniSettings.cpp" />
+    <ClCompile Include="..\PluginGeneric\Injector.cpp" />
+    <ClCompile Include="..\PluginGeneric\OptionsDialog.cpp" />
+    <ClCompile Include="..\PluginGeneric\UpdateCheck.cpp" />
+    <ClCompile Include="olly1patches.cpp" />
+    <ClCompile Include="ScyllaHideOlly1Plugin.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\distorm\config.h" />
+    <ClInclude Include="..\distorm\decoder.h" />
+    <ClInclude Include="..\distorm\distorm.h" />
+    <ClInclude Include="..\distorm\instructions.h" />
+    <ClInclude Include="..\distorm\insts.h" />
+    <ClInclude Include="..\distorm\mnemonics.h" />
+    <ClInclude Include="..\distorm\operands.h" />
+    <ClInclude Include="..\distorm\prefix.h" />
+    <ClInclude Include="..\distorm\textdefs.h" />
+    <ClInclude Include="..\distorm\wstring.h" />
+    <ClInclude Include="..\distorm\x86defs.h" />
+    <ClInclude Include="..\InjectorCLI\ApplyHooking.h" />
+    <ClInclude Include="..\InjectorCLI\DynamicMapping.h" />
+    <ClInclude Include="..\InjectorCLI\Logger.h" />
+    <ClInclude Include="..\InjectorCLI\OperatingSysInfo.h" />
+    <ClInclude Include="..\InjectorCLI\ReadNtConfig.h" />
+    <ClInclude Include="..\InjectorCLI\RemoteHook.h" />
+    <ClInclude Include="..\InjectorCLI\RemotePebHider.h" />
+    <ClInclude Include="..\PluginGeneric\AttachDialog.h" />
+    <ClInclude Include="..\PluginGeneric\CustomExceptionHandler.h" />
+    <ClInclude Include="..\PluginGeneric\IniSettings.h" />
+    <ClInclude Include="..\PluginGeneric\Injector.h" />
+    <ClInclude Include="..\PluginGeneric\OptionsDialog.h" />
+    <ClInclude Include="..\PluginGeneric\ScyllaHideVersion.h" />
+    <ClInclude Include="..\PluginGeneric\UpdateCheck.h" />
+    <ClInclude Include="ollyplugindefinitions.h" />
+    <ClInclude Include="olly1patches.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ScyllaHideOlly1Plugin.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\PluginGeneric\findere.bmp" />
+    <None Include="..\PluginGeneric\finderf.bmp" />
+    <None Include="..\PluginGeneric\searchwindow.cur" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
